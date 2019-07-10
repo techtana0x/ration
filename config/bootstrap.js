@@ -77,6 +77,9 @@ module.exports.bootstrap = async function() {
     { label: 'Rad Mountain Bike', user: ryan.id },
     { label: 'Lawnmower that Matches the grass', user: matt.id },
     { label: 'Sweet Red Drill', user: matt.id },
+    { label: 'Hammock', user: matt.id },
+    { label: 'Playstation 4', user: matt.id },
+    { label: 'Toolkit', user: ryan.id },
   ]);
 
   await User.addToCollection(matt.id, 'friends', [ryan.id]);

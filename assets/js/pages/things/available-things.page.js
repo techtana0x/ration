@@ -47,6 +47,7 @@ parasails.registerPage('available-things', {
       console.log('ok it worked!');
       _.remove(this.things, { id: this.selectedThing.id });
       this.$forceUpdate();
+      this.closeDeleteThingModal();
     }
   }
 });

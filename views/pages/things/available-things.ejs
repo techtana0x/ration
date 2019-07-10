@@ -3,7 +3,7 @@
     <div class="col-12 text-center">
       <h1>Things</h1>
       <p>View available items to borrow, or upload your own things.</p>
-      <button type="button" class="btn btn-outline-info">TODO</button>
+      <button type="button" class="btn btn-outline-info">Add an Item</button>
     </div>
   </div>
 
@@ -25,10 +25,7 @@
   <modal v-if="confirmDeleteThingModalOpen && selectedThing" v-cloak key="delete" @close="closeDeleteThingModal()">
     <ajax-form action="destroyOneThing" :syncing.sync="syncing" :cloud-error.sync="cloudError" :handle-parsing="handleParsingDeleteThingForm" @submitted="submittedDeleteThingForm()">
       <div class="modal-header">
-        <h5 class="modal-title text-left float-left">Remove this item?</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+        <h5 class="modal-title text-left">Remove this item?</h5>
       </div>
       <div class="modal-body">
         <p>Are you sure you want to remove this {{selectedThing.label || 'item'}}?</p>
@@ -36,7 +33,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-outline-secondary mr-1" data-dismiss="modal">Nevermind</button>
-        <button type="button" class="btn btn-danger ml-1">Remove</button>
+        <button type="submit" class="btn btn-danger ml-1">Remove</button>
       </div>
     </ajax-form>
 

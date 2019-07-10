@@ -34,9 +34,6 @@ module.exports = {
     })
     .populate('user');
 
-    console.log(things);
-
-    // Respond with view.
     return {things};
   }
 };
