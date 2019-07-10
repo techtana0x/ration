@@ -1,0 +1,45 @@
+<div id="available-things" v-cloak>
+  <div class="row">
+    <div class="col-12 text-center">
+      <h1>Things</h1>
+      <p>View available items to borrow, or upload your own things.</p>
+      <button type="button" class="btn btn-outline-info">TODO</button>
+    </div>
+  </div>
+
+  <div class="card-columns mt-4">
+    <div v-for="thing in things" class="card">
+      <div class="card-body">
+        <h5 class="card-title">{{thing.label}}</h5>
+        <p class="mb-0">
+          <small class="owner text-secondary" v-if="thing.user.id === me.id">Mine</small>
+          <small class="owner text-secondary" v-else>{{thing.user.fullName}}</small>
+          <span class="float-right pointer" v-if="me.id === thing.user.id" @click="clickDeleteThing(thing.id)"><i
+              class="fa fa-trash-o" aria-hidden="true"></i></span>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <% /* Confirm Delete Thing Modal */ %>
+  <modal v-if="confirmDeleteThingModalOpen && selectedThing" v-cloak key="delete" @close="closeDeleteThingModal()">
+    <ajax-form action="destroyOneThing" :syncing.sync="syncing" :cloud-error.sync="cloudError" :handle-parsing="handleParsingDeleteThingForm" @submitted="submittedDeleteThingForm()">
+      <div class="modal-header">
+        <h5 class="modal-title text-left float-left">Remove this item?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to remove this {{selectedThing.label || 'item'}}?</p>
+        <p>This item will no longer be available to share with friends.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary mr-1" data-dismiss="modal">Nevermind</button>
+        <button type="button" class="btn btn-danger ml-1">Remove</button>
+      </div>
+    </ajax-form>
+
+  </modal>
+</div>
+<%- /* Expose server-rendered data as window.SAILS_LOCALS :: */ exposeLocalsToBrowser() %>
