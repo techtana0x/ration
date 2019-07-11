@@ -20,6 +20,7 @@
     "htmlhint": "0.11.0",
     "lesshint": "6.3.6",
     "mocha": "^6.1.4",
+    "nodemon": "^1.19.1",
     "sails-hook-grunt": "^4.0.0"
   },
   "scripts": {
